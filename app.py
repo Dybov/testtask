@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app(config_object='config.AppConfig'):
@@ -7,6 +7,10 @@ def create_app(config_object='config.AppConfig'):
     # Dynamic config to use this entrypoint by both development and production.
     # Do not forget to create config/prod.py with ProdConfig in production.
     app.config.from_object(config_object)
+
+    @app.route('/')
+    def index():
+        return render_template('index.html')
 
     return app
 
