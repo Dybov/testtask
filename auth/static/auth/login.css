@@ -1,0 +1,11 @@
+.login-form {
+  padding: 8px;
+}
+
+.login-input {
+  margin: 8px;
+}
+
+.login-form input[type="submit"] {
+  background-color: #ccc;
+}

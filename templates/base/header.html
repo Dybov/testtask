@@ -1,9 +1,13 @@
 <header class="header">
-  <div class="header-info">Some icon and Company info</div>
+  <div class="header-info">Some icon and Company info
+  <span class="header-login">
+    {% include 'auth/header_login_block.html' %}
+  </span>
+  </div>
   <nav class="navbar">
     <ul className="navbar-nav text-right">
       <li><a href="{{ url_for('index') }}">Home</a></li>
-      <li><a href="">Task 1</a></li>
+      <li><a href="{{ url_for('auth.user_list') }}">Task 1</a></li>
       <li><a href="">Task 2</a></li>
     </ul>
   </nav>

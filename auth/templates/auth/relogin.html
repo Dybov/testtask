@@ -1,0 +1,9 @@
+{% extends 'auth/base.html' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block body %}
+	<h1>You are already logged in.</h1>
+	<p>If you want to log in under another profile, <a href="{{ url_for('auth.logout') }}">logout</a> first.		
+	</p>
+{% endblock %}

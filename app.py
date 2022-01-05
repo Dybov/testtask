@@ -12,6 +12,9 @@ def create_app(config_object='config.AppConfig'):
     def index():
         return render_template('index.html')
 
+    import auth
+    app.register_blueprint(auth.bp)
+
     return app
 
 
