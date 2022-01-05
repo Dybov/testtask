@@ -1,10 +1,11 @@
-# Installation
+# Install
 
 ## Download
 
 If you have Git installed:
 ```console
 git clone https://github.com/Dybov/testtask
+cd testtask
 ```
 
 Or download this project via [direct link](https://github.com/Dybov/testtask/archive/refs/heads/master.zip) and unzip it.
@@ -14,7 +15,6 @@ Or download this project via [direct link](https://github.com/Dybov/testtask/arc
 ### Unix/Linux
 
 ```console
-cd path_to_project_root_folder
 python3 -m venv --prompt testtask env
 source env/bin/activate
 ```
@@ -22,7 +22,6 @@ source env/bin/activate
 ### Windows
 
 ```cmd
-cd path_to_project_root_folder
 py -m venv --prompt testtask env
 .\env\Scripts\activate
 ```
@@ -31,14 +30,6 @@ py -m venv --prompt testtask env
 
 Or use virtualenv and/or virtualenvwrapper as you are used to.
 
-## After all
-
-Do not forget
-```console
-deactivate
-```
-your virtual environment after testing and running in develompent.
-
 ## Install packages
 
 Use python install package for both nix and win
@@ -46,20 +37,16 @@ Use python install package for both nix and win
 pip install -r requirements.txt
 ```
 
-# Run tests
+# Run
 
-Add later
-
-# Run dev
-
-Add later
-
-# Run prod
-
-Add later
+```console
+python app.py
+```
+>Note: If in your \*nix OS **python** command is used for python 2 use **python3** instead
+>If using **flask run** instead, then do not forget to add environment variable **FLASK_ENV=development**  
 
 # Deploy
 
-Add later
+Out of scope
 
 Author: [Andrew Dybov](mailto:dybov.andrew@gmail.com)
