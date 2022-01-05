@@ -1,6 +1,11 @@
 body {
   margin: 0;
 }
+
+.body {
+  margin: 16px;
+}
+
 .header {
   background-color: #bbb;
 }

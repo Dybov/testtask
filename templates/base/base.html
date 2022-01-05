@@ -8,7 +8,9 @@
 </head>
 <body>
   {% include 'base/header.html' %}
-  {% block body required %}{% endblock %}
+  <div class="body">
+    {% block body required %}{% endblock %}
+  </div>
   {% include 'base/footer.html' %}
 </body>
 </html>
