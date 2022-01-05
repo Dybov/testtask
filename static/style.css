@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+}
+.header {
+  background-color: #bbb;
+}
+
+.header-info {
+  padding: 1em;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #777;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  color: white;
+  text-align: center;
+  padding: .5em 1em;
+  display: block;
+  text-decoration: none;
+}
+
+.navbar li a:hover {
+  background-color: #555;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  background-color: #bbb;
+}
