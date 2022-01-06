@@ -9,3 +9,17 @@
 .login-form input[type="submit"] {
   background-color: #ccc;
 }
+
+.user-list-table {
+  border-collapse: collapse;
+}
+
+.user-list-table td, th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.user-list-table tr:nth-child(even) {
+  background-color: #ddd;
+}
