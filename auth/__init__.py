@@ -7,8 +7,9 @@ from flask import (
     flash,
     url_for,
 )
-from auth.model import User
 
+from auth.model import User
+from auth.utils import login_required
 
 bp = Blueprint(
     'auth',
@@ -20,6 +21,7 @@ bp = Blueprint(
 
 
 @bp.route('/user-list')
+@login_required
 def user_list():
     users = User.query.all()
     return render_template('auth/user_list.html', users=users)
