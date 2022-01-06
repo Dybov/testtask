@@ -4,3 +4,4 @@ class DevConfig():
     '1b03016b723bf2ba0d3f3b4142b5d5562f13'
     ENV = 'development'
     DEBUG = True
+    DATABASE_URI = 'postgresql://flask:flask@localhost/testtaskdb'

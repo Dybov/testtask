@@ -12,6 +12,11 @@ def create_app(config_object='config.AppConfig'):
     def index():
         return render_template('index.html')
 
+    # Use app context because DATABASE_URI provides by context
+    with app.app_context():
+        from db import init_app
+        init_app(app)
+
     import auth
     app.register_blueprint(auth.bp)
 
