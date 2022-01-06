@@ -1,4 +1,12 @@
-from flask import Blueprint, render_template, redirect, request, session
+from flask import (
+    Blueprint,
+    render_template,
+    redirect,
+    request,
+    session,
+    flash,
+    url_for,
+)
 from auth.model import User
 
 
@@ -19,13 +27,23 @@ def user_list():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
+    next_ = request.args.get('next') or request.url_root
+
     if request.method == 'POST':
-        session.clear()
-        session['username'] = request.form['username']
-        return redirect(request.referrer)
+        username = request.form['username']
+
+        user = User.query.filter_by(username=username).first()
+        if user and user.check_password(request.form['password']):
+            session.clear()
+            session['username'] = username
+            return redirect(url_for(next_))
+
+        flash("Wrong username or password")
+
     elif 'username' in session:
         return render_template('auth/relogin.html')
-    return render_template('auth/login.html', next=request.args.get('next'))
+
+    return render_template('auth/login.html', next=next_)
 
 
 @bp.route('/logout')

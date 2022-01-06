@@ -2,6 +2,6 @@
 {% if 'username' in session %}
 	<a href="{{ url_for('auth.logout') }}">Logout</a>
 {% else %}
-	<a href="{{ url_for('auth.login') }}">Login</a>
+	<a href="{{ url_for('auth.login', next=request.endpoint) }}">Login</a>
 {% endif %}
 {% endblock %}
