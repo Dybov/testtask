@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, redirect, request, session
+from auth.model import User
+
 
 bp = Blueprint(
     'auth',
@@ -11,8 +13,7 @@ bp = Blueprint(
 
 @bp.route('/user-list')
 def user_list():
-    # Just temporary placeholder for user
-    users = ['1', '2']
+    users = User.query.all()
     return render_template('auth/user_list.html', users=users)
 
 

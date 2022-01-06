@@ -1,9 +1,27 @@
-{% extends 'base/base.html' %}
+{% extends 'auth/base.html' %}
+
 {% block body %}
+  {% if users %}
   <h1>Users are:</h1>
-  <ul>
+  <table class="user-list-table">
+    <tr>
+      <th>Name:</th>
+      <th>Username:</th>
+      <th>Is Superuser:</th>
+      <th>Permissions:</th>
+      <th>Actions:</th>
+    </tr>
     {% for user in users %}
-      <li>{{ user }}</li>
+      <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.is_superuser }}</td>
+        <td>Permissions:</td>
+        <td>edit</td>
+      </tr>
     {% endfor %}
-  </ul>
+  </table>
+  {% else %}
+    <h1>No users found</h1>
+  {% endif %}
 {% endblock %}
