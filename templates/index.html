@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% block title %}Test Task for Alar Studios{% endblock %}
+{% block body %}
+  <div>
+    <h1>Solution for test tasks:</h1>
+    <ul>
+      <li><a href="{{ url_for('auth.user_list') }}">Task 1</a></li>
+      <li>Task 2 was not completed</li>
+    </ul>
+  </div>
+{% endblock %}

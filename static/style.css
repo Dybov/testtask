@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  margin: 16px;
+}
+
+.header {
+  background-color: #bbb;
+}
+
+.header-info {
+  padding: 1em;
+}
+
+.header-login {
+  position: absolute;
+  right: 0;
+  margin-right: 8px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #777;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  color: white;
+  text-align: center;
+  padding: .5em 1em;
+  display: block;
+  text-decoration: none;
+}
+
+.navbar li a.active {
+  background-color: #666;
+}
+
+.navbar li a:hover {
+  background-color: #555;
+}
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1em;
+  background-color: #bbb;
+}

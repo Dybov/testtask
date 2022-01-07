@@ -1,0 +1,7 @@
+{% block header_login %}
+{% if g.user %}
+	<span>Hello, {{ g.user.name }} | <a href="{{ url_for('auth.logout') }}">Logout</a></span>
+{% else %}
+	<a href="{{ url_for('auth.login', next=request.endpoint) }}">Login</a>
+{% endif %}
+{% endblock %}
