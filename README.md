@@ -37,6 +37,8 @@ Use python install package for both nix and win
 pip install -r requirements.txt
 ```
 
+>If you have a trouble while installing psycopg2, try **pip install psycopg2-binary** instead 
+
 # Setup database
 
 [PostgreSQL](https://www.postgresql.org/) is required in the task.
@@ -80,6 +82,10 @@ Before first run, initialize database with
 python init_db.py
 ```
 
+Database will filled at init step with seed provided at fixture/*
+
+Initial user is superuser with username **groot** and password **iamgroot**. Superuser can add/change/delete any stuff without setting permissions.
+
 To run:
 ```console
 python app.py
@@ -89,8 +95,30 @@ python app.py
 
 After adding **project_folder/config/prod.py** file with **ProdConfig** class it will run using that config.
 
+# Unittest
+
+Unittesting is out of scope of the task.
+
 # Deploy
 
-Out of scope of the task.
+Deployment is out of scope of the task.
+
+# Summary
+
+Task #1 is completed:
+- There is more than 2 pages
+- Features add/change/delete user are provided with permissions
+- Unauthorized access to user_list/add/change/delete pages is prohibited. add/change/delete are allowed only users with appropriate permissions
+- There is AJAX request (JQuery) for deleting users works from user_list page. It is inside auth/static/auth/ajax_delete_user_from_table.js
+- ORM are in auth/model.py, raw SQL in seed fixtures/sql/user_seed.sql
+- Seed for DB above. It is loaded with **python init_db.py**
+- Here is run process described in README.md
+- requirements.txt is provided at the root folder. Additional request was about installation of psycopg2. The answer was that it is already included in SQLAlchemy, but it is not, so it is in requirements.txt
+- Comments placed here and there
+- Project tested at both Linux and Windows at 2 different machines
+- Instuction for venv is provided in README.md. Docker was not used.
+
+Task #2 was not completed.
+
 
 Author: [Andrew Dybov](mailto:dybov.andrew@gmail.com)
