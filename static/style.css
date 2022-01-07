@@ -43,6 +43,10 @@ body {
   text-decoration: none;
 }
 
+.navbar li a.active {
+  background-color: #666;
+}
+
 .navbar li a:hover {
   background-color: #555;
 }
