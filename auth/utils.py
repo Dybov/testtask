@@ -5,6 +5,10 @@ from flask import redirect, request, session, url_for, g, abort
 from auth.model import Permission
 
 
+def is_ajax():
+    return request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
+
 def login_required(func):
     """Redirect to login form unauthorized users"""
 

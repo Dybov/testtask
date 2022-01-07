@@ -7,13 +7,14 @@ from flask import (
     url_for,
     abort,
     g,
+    jsonify,
 )
 
 import db
 
 from auth import bp
 from auth.model import User, Permission
-from auth.utils import login_required, require_permission
+from auth.utils import login_required, require_permission, is_ajax
 
 
 @bp.route('/user/list')
@@ -147,5 +148,8 @@ def delete_user(id):
     with db.db_session() as db_session:
         db_session.delete(user)
         db_session.commit()
+
+    if is_ajax():
+        return jsonify(deleted=id)
 
     return redirect(url_for('auth.user_list'))

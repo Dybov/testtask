@@ -1,5 +1,14 @@
 {% extends 'auth/base.html' %}
 
+{% block head %}
+  {{ super() }}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript">$CURRENT_USER_ID = {{ g.user.id|tojson|safe }}</script>
+
+  {# Load script for AJAX removing users#}
+  <script type="text/javascript" src="{{ url_for('auth.static', filename='auth/ajax_delete_user_from_table.js') }}"></script>
+{% endblock %}
+
 {% block body %}
   {% if users %}
   <h1>Users are:</h1>
@@ -14,7 +23,7 @@
       {% endif %}
     </tr>
     {% for user in users %}
-      <tr>
+      <tr id="row-{{ user.id }}">
         <td>{{ user.name }}</td>
         <td>{{ user.username }}</td>
         <td>{{ user.is_superuser }}</td>
@@ -33,7 +42,7 @@
             <a href="{{ url_for('auth.change_user', id=user.id) }}"><button>Change</button></a>
             {% endif %}
             {% if can['delete'] %}
-            <a href="{{ url_for('auth.delete_user', id=user.id) }}"><button>Delete</button></a>
+            <a class="delete-button" href="{{ url_for('auth.delete_user', id=user.id) }}"><button>Delete</button></a>
             {% endif %}
           </td>
         {% endif %}
