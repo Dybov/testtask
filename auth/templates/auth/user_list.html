@@ -9,7 +9,9 @@
       <th>Username:</th>
       <th>Is Superuser:</th>
       <th>Permissions:</th>
+      {% if can['change'] or can['delete'] %}
       <th>Actions:</th>
+      {% endif %}
     </tr>
     {% for user in users %}
       <tr>
@@ -25,11 +27,23 @@
             </ul>
           {% endif %}
         </td>
-        <td>edit</td>
+        {% if can['change'] or can['delete'] %}
+          <td>
+            {% if can['change'] %}
+            <a href="{{ url_for('auth.change_user', id=user.id) }}"><button>Change</button></a>
+            {% endif %}
+            {% if can['delete'] %}
+            <a href="{{ url_for('auth.delete_user', id=user.id) }}"><button>Delete</button></a>
+            {% endif %}
+          </td>
+        {% endif %}
       </tr>
     {% endfor %}
   </table>
   {% else %}
     <h1>No users found</h1>
+  {% endif %}
+  {% if can['add'] %}
+    <a href="{{ url_for('auth.add_user') }}"><button>Add user</button></a>
   {% endif %}
 {% endblock %}

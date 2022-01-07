@@ -1,0 +1,39 @@
+{% extends 'auth/base.html' %}
+
+{% block title %}Add User{% endblock %}
+
+{% block body %}
+  <form class="login-form" action="" method="POST">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="errors">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}            
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <h2>User Info:</h2>
+    <div class="login-input">
+      <label for="username">Username:</label></br>
+      <input type="text" id="username" name="username" placeholder="Username" required>
+    </div>
+    <div class="login-input">
+      <label for="name">Name:</label></br>
+      <input type="text" id="name" name="name" placeholder="Gamora" >
+    </div>
+    <div class="login-input">
+      <label for="password">Password:</label></br>
+      <input type="text" id="password" name="password" placeholder="New Password" required>
+    </div>
+    {% if g.user.is_superuser %}
+      {# Visible only for superusers #}
+      <div class="login-input">
+        <input type="checkbox" id="is_superuser" name="is_superuser">
+        <label for="is_superuser">is superuser</label></br>
+      </div>
+    {% endif %}
+    <h2>Permissions can be set only at change form</h2>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

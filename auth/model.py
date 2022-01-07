@@ -28,7 +28,10 @@ class User(db.Base):
 
     def has_permission(self, permission):
         """Show if user has permission, but not check if superuser"""
-        return self.is_superuser or self in permission.users
+        if isinstance(permission, str):
+            permission = Permission.query.filter_by(model=permission).first()
+
+        return self in permission.users
 
 
 class Permission(db.Base):
@@ -51,7 +54,7 @@ class Permission(db.Base):
     @classmethod
     def prepopulate(cls):
         # Get permissions tree actions for all registred Models in ORM
-        actions = ['add', 'change', 'remove']
+        actions = ['add', 'change', 'delete']
         registry = db.Base.registry
         permission_models = [
             f'{mapper.class_.__module__}.{mapper.class_.__name__}.{action}'

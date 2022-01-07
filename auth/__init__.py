@@ -31,13 +31,6 @@ def load_user():
 @bp.before_app_first_request
 def prepopulate_permission_db():
     Permission.prepopulate()
-    import db
-    with db.db_session() as session:
-        usr = User.query.get(1)
-        p = Permission.query.all()
-        usr.permissions.extend(p)
-        session.add(usr)
-        session.commit()
 
 # Ensure all views will be loaded
 import auth.views

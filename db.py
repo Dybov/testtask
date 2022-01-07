@@ -30,6 +30,7 @@ engine = create_engine(get_db_uri())
 db_session = scoped_session(sessionmaker(
     autocommit=False,
     autoflush=False,
+    expire_on_commit=False,
     bind=engine,
 ))
 Base = declarative_base()
