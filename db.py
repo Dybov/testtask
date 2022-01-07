@@ -3,10 +3,10 @@ import os
 from flask import current_app
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.orm import scoped_session, sessionmaker, relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 # Import types for using them from single entrypoint bd.py
-from sqlalchemy import Column, String, Integer, Boolean
+from sqlalchemy import Column, String, Integer, Boolean, ForeignKey
 
 
 def get_db_uri():

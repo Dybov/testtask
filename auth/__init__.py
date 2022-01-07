@@ -6,10 +6,12 @@ from flask import (
     session,
     flash,
     url_for,
+    g,
+    abort
 )
 
-from auth.model import User
-from auth.utils import login_required
+from auth.model import User, Permission
+from auth.utils import login_required, require_permission
 
 bp = Blueprint(
     'auth',
@@ -22,6 +24,7 @@ bp = Blueprint(
 
 @bp.route('/user-list')
 @login_required
+@require_permission('auth.model.User.change')
 def user_list():
     users = User.query.all()
     return render_template('auth/user_list.html', users=users)
@@ -52,3 +55,20 @@ def login():
 def logout():
     session.clear()
     return redirect(request.url_root)
+
+
+@bp.before_app_request
+def load_user():
+    if 'username' not in session:
+        g.user = None
+    else:
+        user = User.query.filter_by(username=session['username']).first()
+        if not user:
+            session.clear()
+            abort(500)
+        g.user = user
+
+
+@bp.before_app_first_request
+def prepopulate_permission_db():
+    Permission.prepopulate()

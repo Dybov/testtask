@@ -16,7 +16,15 @@
         <td>{{ user.name }}</td>
         <td>{{ user.username }}</td>
         <td>{{ user.is_superuser }}</td>
-        <td>Permissions:</td>
+        <td>
+          {% if user.permissions %}
+            <ul>
+              {% for permission in user.permissions %}
+                <li>{{ permission.model }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </td>
         <td>edit</td>
       </tr>
     {% endfor %}
