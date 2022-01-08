@@ -18,7 +18,9 @@ def create_app(config_object='config.AppConfig'):
         init_app(app)
 
     import auth
+    import datapoint
     app.register_blueprint(auth.bp)
+    app.register_blueprint(datapoint.bp)
 
     return app
 
