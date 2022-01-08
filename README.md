@@ -118,7 +118,15 @@ Task #1 is completed:
 - Project tested at both Linux and Windows at 2 different machines
 - Instuction for venv is provided in README.md. Docker was not used.
 
-Task #2 was not completed.
-
+Task #2 is completed:
+- Use threading.Thread for async
+- Add 3 data sources (2 in JSON files in datapoint/data folder) with lists of dict((id, name))
+- All sources are available by HTTP
+- ID distributes as required:
+	- Source 1: ID 1-10,31-40
+	- Source 2: ID 11-20,41-50
+	- Source 3: ID 21-30,51-60
+- Add single access point (route) for all sources that provides merged and sorted data. This point handle asyncronious (Thread) IO operation of getting data from sources and merging+sorting. It was not clear what kind of request shoud be implemented: HTTP / IO), so HTTP way is commented and required to install requests lib.
+- Error on timeout of single access point is implemented
 
 Author: [Andrew Dybov](mailto:dybov.andrew@gmail.com)
