@@ -7,7 +7,8 @@
   <nav class="navbar">
     <ul className="navbar-nav text-right">
       <li><a href="{{ url_for('index') }}" class="{{ 'active' if request.url_rule.endpoint == 'index' }}">Home</a></li>
-      <li><a href="{{ url_for('auth.user_list') }}" class="{{ 'active' if request.url_rule.endpoint == 'auth.user_list' }}">Task 1</a></li>
+      <li><a href="{{ url_for('auth.user_list') }}" class="{{ 'active' if request.url_rule.endpoint == 'auth.user_list' }}">Task 1 (user list)</a></li>
+      <li><a href="{{ url_for('datapoint.collect_data') }}" class="{{ 'active' if request.url_rule.endpoint == 'datapoint.collect_data' }}">Task 2 (gathered data)</a></li>
     </ul>
   </nav>
 </header>

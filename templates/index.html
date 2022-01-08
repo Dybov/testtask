@@ -4,8 +4,17 @@
   <div>
     <h1>Solution for test tasks:</h1>
     <ul>
-      <li><a href="{{ url_for('auth.user_list') }}">Task 1</a></li>
-      <li>Task 2 was not completed</li>
+      <li><a href="{{ url_for('auth.user_list') }}">Task 1: User list</a></li>
+      <li>
+      	<p>Task2:</p>
+      	<ul>
+      		<li><a href="{{ url_for('datapoint.collect_data') }}">Single access point for all sources that provides merged and sorted data</a></li>
+      		{% for id in (1, 2, 3) %}
+      			<li><a href="{{ url_for('datapoint.get_data', id=id) }}">Data from Source {{ id }}</a></li>
+      		{% endfor %}
+      	</ul>
+      </li>
+
     </ul>
   </div>
 {% endblock %}
